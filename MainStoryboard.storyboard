@@ -27,21 +27,24 @@
             </objects>
             <point key="canvasLocation" x="-1471" y="531"/>
         </scene>
-        <!--View Controller-->
+        <!--Cart Page Controller-->
         <scene sceneID="gPa-qk-fF6">
             <objects>
-                <viewController id="b0E-SL-4UW" sceneMemberID="viewController">
+                <viewController id="b0E-SL-4UW" customClass="CartPageController" customModule="E_Buy" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L8L-d6-6db">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="I1T-s0-6Os"/>
-                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                        <color key="backgroundColor" red="0.99607843137254903" green="0.8666666666666667" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="JBD-5S-qgQ"/>
+                    <connections>
+                        <outlet property="tableView" destination="kXX-6Z-u5c" id="J0I-cx-A86"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTr-MN-TdX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1471" y="1336"/>
+            <point key="canvasLocation" x="-1471.0144927536232" y="1335.9375"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="gpD-KC-6Cz">
@@ -81,17 +84,37 @@
             </objects>
             <point key="canvasLocation" x="455" y="520"/>
         </scene>
-        <!--View Controller-->
+        <!--Home Page Controller-->
         <scene sceneID="9Om-BH-XXX">
             <objects>
-                <viewController id="LSM-i7-hah" sceneMemberID="viewController">
+                <viewController id="LSM-i7-hah" customClass="HomePageController" customModule="E_Buy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cfs-lr-35t">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kXX-6Z-u5c">
+                                <rect key="frame" x="20" y="88" width="374" height="99"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="Q5i-2P-qC9">
+                                        <rect key="frame" x="0.0" y="44.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q5i-2P-qC9" id="g4G-66-Yow">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="78g-46-R9s"/>
-                        <color key="backgroundColor" systemColor="systemBrownColor"/>
+                        <color key="backgroundColor" red="0.99607843137254903" green="0.8666666666666667" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="eSk-Pd-XDC"/>
+                    <connections>
+                        <outlet property="tableView" destination="kXX-6Z-u5c" id="5Li-fR-4s6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3l-p1-DWd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -99,16 +122,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CartIcon" width="50" height="50"/>
-        <image name="HomeIcon" width="50" height="50"/>
+        <image name="CartIcon" width="40" height="40"/>
+        <image name="HomeIcon" width="40" height="40"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
