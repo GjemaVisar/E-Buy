@@ -7,16 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FAEBB9DB2B88C5F300C31610 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEBB9DA2B88C5F300C31610 /* ViewController.swift */; };
 		FAF0F8832B88891400290E31 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0F8822B88891400290E31 /* Tests_iOS.swift */; };
 		FAF0F8852B88891400290E31 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0F8842B88891400290E31 /* Tests_iOSLaunchTests.swift */; };
 		FAF0F88F2B88891400290E31 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0F88E2B88891400290E31 /* Tests_macOS.swift */; };
 		FAF0F8912B88891400290E31 /* Tests_macOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0F8902B88891400290E31 /* Tests_macOSLaunchTests.swift */; };
-		FAF0F8922B88891400290E31 /* E_BuyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0F86A2B88891100290E31 /* E_BuyApp.swift */; };
-		FAF0F8932B88891400290E31 /* E_BuyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0F86A2B88891100290E31 /* E_BuyApp.swift */; };
-		FAF0F8942B88891400290E31 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0F86B2B88891100290E31 /* ContentView.swift */; };
-		FAF0F8952B88891400290E31 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0F86B2B88891100290E31 /* ContentView.swift */; };
 		FAF0F8962B88891400290E31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAF0F86C2B88891400290E31 /* Assets.xcassets */; };
 		FAF0F8972B88891400290E31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAF0F86C2B88891400290E31 /* Assets.xcassets */; };
+		FAF0F8A92B888FF900290E31 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAF0F8A82B888FF900290E31 /* MainStoryboard.storyboard */; };
+		FAF0F8AB2B8896AD00290E31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0F8AA2B8896AD00290E31 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FAF0F86A2B88891100290E31 /* E_BuyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E_BuyApp.swift; sourceTree = "<group>"; };
-		FAF0F86B2B88891100290E31 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FAEBB9DA2B88C5F300C31610 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FAEBBA692B88D27600C31610 /* E-Buy--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "E-Buy--iOS--Info.plist"; sourceTree = "<group>"; };
 		FAF0F86C2B88891400290E31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAF0F8712B88891400290E31 /* E-Buy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "E-Buy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF0F8772B88891400290E31 /* E-Buy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "E-Buy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +48,8 @@
 		FAF0F88A2B88891400290E31 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF0F88E2B88891400290E31 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		FAF0F8902B88891400290E31 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		FAF0F8A82B888FF900290E31 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		FAF0F8AA2B8896AD00290E31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +87,10 @@
 		FAF0F8642B88891100290E31 = {
 			isa = PBXGroup;
 			children = (
+				FAEBBA692B88D27600C31610 /* E-Buy--iOS--Info.plist */,
+				FAEBB9DA2B88C5F300C31610 /* ViewController.swift */,
+				FAF0F8AA2B8896AD00290E31 /* AppDelegate.swift */,
+				FAF0F8A82B888FF900290E31 /* MainStoryboard.storyboard */,
 				FAF0F8692B88891100290E31 /* Shared */,
 				FAF0F8782B88891400290E31 /* macOS */,
 				FAF0F8812B88891400290E31 /* Tests iOS */,
@@ -97,8 +102,6 @@
 		FAF0F8692B88891100290E31 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				FAF0F86A2B88891100290E31 /* E_BuyApp.swift */,
-				FAF0F86B2B88891100290E31 /* ContentView.swift */,
 				FAF0F86C2B88891400290E31 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -266,6 +269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAF0F8A92B888FF900290E31 /* MainStoryboard.storyboard in Resources */,
 				FAF0F8962B88891400290E31 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,8 +303,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAF0F8942B88891400290E31 /* ContentView.swift in Sources */,
-				FAF0F8922B88891400290E31 /* E_BuyApp.swift in Sources */,
+				FAEBB9DB2B88C5F300C31610 /* ViewController.swift in Sources */,
+				FAF0F8AB2B8896AD00290E31 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,8 +312,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAF0F8952B88891400290E31 /* ContentView.swift in Sources */,
-				FAF0F8932B88891400290E31 /* E_BuyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,9 +469,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "E-Buy--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIMainStoryboardFile = MainStoryboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
@@ -496,9 +499,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "E-Buy--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIMainStoryboardFile = MainStoryboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
@@ -611,7 +615,6 @@
 		FAF0F8A42B88891400290E31 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -629,7 +632,6 @@
 		FAF0F8A52B88891400290E31 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
