@@ -105,15 +105,15 @@ class DataBaseManager {
             print("Error preparing insert statement")
         }
     }
+    func dropProductTable() {
+           let dropTableQuery = "DROP TABLE IF EXISTS \(productTable);"
 
-    public func insertDummieData() {
-        insertProduct(name: "Product1", price: 19.99, image: "product1.jpg", description: "Description of Product1", quantity: 10)
-        insertProduct(name: "Product2", price: 29.99, image: nil, description: nil, quantity: nil)
-        insertProduct(name: "Product3", price: 39.99, image: nil, description: nil, quantity: 5)
-        print("Data inserted succesfully")
-        // Add more dummy data as needed
-    }
-    
+           if sqlite3_exec(db, dropTableQuery, nil, nil, nil) == SQLITE_OK {
+               print("Table dropped successfully")
+           } else {
+               print("Error dropping table")
+           }
+       }
     func printAllProducts() {
           let query = "SELECT * FROM \(productTable);"
 
@@ -138,5 +138,61 @@ class DataBaseManager {
               print("Error preparing SELECT statement")
           }
       }
+    struct Product: Codable {
+        let title: String
+        let price: Double
+        let description: String
+        let image: String
+        let category: String
+    }
+
+    
+    func fetchAndInsertDataFromAPI() {
+        guard let url = URL(string: "https://fakestoreapi.com/products?limit=10") else {
+            print("Invalid API URL")
+            return
+        }
+
+        URLSession.shared.dataTask(with: url) { [self] (data, response, error) in
+            guard let data = data, error == nil else {
+                print("Error fetching data from API: \(error?.localizedDescription ?? "Unknown error")")
+                return
+            }
+
+            do {
+                let products = try JSONDecoder().decode([Product].self, from: data)
+
+                // Save JSON data to a file
+                saveJSONToFile(data)
+
+                for product in products {
+                    self.insertProduct(
+                        name: product.title,
+                        price: product.price,
+                        image: product.image,
+                        description: product.description,
+                        quantity: 5 // You might adjust this based on your data model
+                    )
+                }
+
+                print("Data fetched from API, inserted into the database, and saved to a JSON file successfully.")
+            } catch {
+                print("Error decoding JSON: \(error.localizedDescription)")
+            }
+        }.resume()
+    }
+
+    private func saveJSONToFile(_ data: Data) {
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = documentsDirectory.appendingPathComponent("apiData.json")
+
+        do {
+            try data.write(to: fileURL)
+            print("JSON data saved to: \(fileURL.path)")
+        } catch {
+            print("Error saving JSON data to file: \(error.localizedDescription)")
+        }
+    }
+
   }
 
