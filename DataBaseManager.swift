@@ -8,6 +8,7 @@ class DataBaseManager {
     
     private let productTable = "product"
     private let productTableCart = "cart"
+    private let idColumn = "id"
     private let nameColumn = "name"
     private let priceColumn = "price"
     private let imageColumn = "image"
@@ -47,7 +48,7 @@ class DataBaseManager {
     private func createTable() {
         let createTableQuery = """
         CREATE TABLE IF NOT EXISTS \(productTable) (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            \(idColumn) INTEGER PRIMARY KEY AUTOINCREMENT,
             \(nameColumn) TEXT NOT NULL,
             \(priceColumn) REAL NOT NULL,
             \(imageColumn) TEXT NOT NULL,
@@ -63,7 +64,7 @@ class DataBaseManager {
         }
         let createTableCart = """
         CREATE TABLE IF NOT EXISTS \(productTableCart) (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            \(idColumn) INTEGER PRIMARY KEY AUTOINCREMENT,
             \(nameColumn) TEXT NOT NULL,
             \(priceColumn) REAL NOT NULL,
             \(imageColumn) TEXT NOT NULL,
@@ -123,39 +124,40 @@ class DataBaseManager {
         }
     }
     func dropProductTable() {
-           let dropTableQuery = "DROP TABLE IF EXISTS \(productTable);"
+        let dropTableQuery = "DROP TABLE IF EXISTS \(productTable);"
 
-           if sqlite3_exec(db, dropTableQuery, nil, nil, nil) == SQLITE_OK {
-               print("Table dropped successfully")
-           } else {
-               print("Error dropping table")
-           }
-       }
+        if sqlite3_exec(db, dropTableQuery, nil, nil, nil) == SQLITE_OK {
+            print("Table dropped successfully")
+        } else {
+            print("Error dropping table")
+        }
+    }
     func printAllProducts() {
-          let query = "SELECT * FROM \(productTable);"
+        let query = "SELECT * FROM \(productTable);"
 
-          var statement: OpaquePointer?
+        var statement: OpaquePointer?
 
-          if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
-              defer {
-                  sqlite3_finalize(statement)
-              }
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            defer {
+                sqlite3_finalize(statement)
+            }
 
-              while sqlite3_step(statement) == SQLITE_ROW {
-                  let id = sqlite3_column_int(statement, 0)
-                  let name = String(cString: sqlite3_column_text(statement, 1))
-                  let price = sqlite3_column_double(statement, 2)
-                  let image = String(cString: sqlite3_column_text(statement, 3))
-                  let description = String(cString: sqlite3_column_text(statement, 4))
-                  let quantity = sqlite3_column_int(statement, 5)
+            while sqlite3_step(statement) == SQLITE_ROW {
+                let id = sqlite3_column_int(statement, 0)
+                let name = String(cString: sqlite3_column_text(statement, 1))
+                let price = sqlite3_column_double(statement, 2)
+                let image = String(cString: sqlite3_column_text(statement, 3))
+                let description = String(cString: sqlite3_column_text(statement, 4))
+                let quantity = sqlite3_column_int(statement, 5)
 
-                  print("ID: \(id), Name: \(name), Price: \(price), Image: \(image), Description: \(description), Quantity: \(quantity)")
-              }
-          } else {
-              print("Error preparing SELECT statement")
-          }
-      }
+                print("ID: \(id), Name: \(name), Price: \(price), Image: \(image), Description: \(description), Quantity: \(quantity)")
+            }
+        } else {
+            print("Error preparing SELECT statement")
+        }
+    }
     struct Product: Codable {
+        let id: Int
         let title: String
         let price: Double
         let description: String
@@ -223,6 +225,7 @@ class DataBaseManager {
             }
 
             while sqlite3_step(statement) == SQLITE_ROW {
+                let id = sqlite3_column_int(statement, 0)
                 let name = String(cString: sqlite3_column_text(statement, 1))
                 let price = sqlite3_column_double(statement, 2)
                 let image = String(cString: sqlite3_column_text(statement, 3))
@@ -230,6 +233,7 @@ class DataBaseManager {
                 let quantity = sqlite3_column_int(statement, 5)
 
                 let product = Product(
+                    id: Int(id),
                     title: name,
                     price: price,
                     description: description,
@@ -258,6 +262,7 @@ class DataBaseManager {
             }
 
             while sqlite3_step(statement) == SQLITE_ROW {
+                let id = sqlite3_column_int(statement, 0)
                 let name = String(cString: sqlite3_column_text(statement, 1))
                 let price = sqlite3_column_double(statement, 2)
                 let image = String(cString: sqlite3_column_text(statement, 3))
@@ -265,6 +270,7 @@ class DataBaseManager {
                 let quantity = sqlite3_column_int(statement, 5)
 
                 let product = Product(
+                    id: Int(id),
                     title: name,
                     price: price,
                     description: description,
@@ -324,7 +330,29 @@ class DataBaseManager {
         
         return false
     }
+    
+    func deleteProductFromCart(productId: Int) -> Bool {
+            let deleteQuery = "DELETE FROM \(productTableCart) WHERE \(idColumn) = ?;"
 
+            var statement: OpaquePointer?
 
+            if sqlite3_prepare_v2(db, deleteQuery, -1, &statement, nil) == SQLITE_OK {
+                defer {
+                    sqlite3_finalize(statement)
+                }
 
-  }
+                sqlite3_bind_int(statement, 1, Int32(productId))
+
+                if sqlite3_step(statement) == SQLITE_DONE {
+                    print("Product deleted from cart successfully.")
+                    return true
+                } else {
+                    print("Error deleting product from cart table")
+                }
+            } else {
+                print("Error preparing delete statement for cart")
+            }
+
+            return false
+        }
+}

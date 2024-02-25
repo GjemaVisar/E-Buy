@@ -7,6 +7,8 @@ class ProductCustomCell: UITableViewCell {
     @IBOutlet var productPrice: UILabel!
     @IBOutlet var buyButton: UIButton!
     @IBOutlet var addToCartButton: UIButton!
+    @IBOutlet var removeFromCartButton: UIButton!
+    var removeFromCartButtonTapped: (() -> Void)?
     var buyButtonTapped: (() -> Void)?
     var addToCartButtonTapped: (() -> Void)?
 
@@ -27,6 +29,21 @@ class ProductCustomCell: UITableViewCell {
         addToCartButtonTapped?()
         let alertController = UIAlertController(title: "Product added to Cart",
                                                         message: "Product added to Cart successfully!",
+                                                        preferredStyle: .alert)
+
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertController.addAction(okAction)
+
+                // Get the current view controller to present the alert
+                if let currentViewController = UIApplication.shared.keyWindow?.rootViewController {
+                    currentViewController.present(alertController, animated: true, completion: nil)
+                }
+    }
+    
+    @IBAction func removeFromCartButtonTapped(_ sender: Any) {
+        removeFromCartButtonTapped?()
+        let alertController = UIAlertController(title: "Product removed",
+                                                        message: "Product removed from  Cart successfully!",
                                                         preferredStyle: .alert)
 
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)

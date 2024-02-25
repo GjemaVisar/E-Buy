@@ -54,14 +54,30 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eD9-kf-k9k">
-                                                    <rect key="frame" x="158" y="100" width="117" height="43"/>
+                                                    <rect key="frame" x="158" y="55" width="117" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="keG-VW-I0D">
+                                                    <rect key="frame" x="158" y="0.0" width="166" height="61"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GIb-lG-Kwu">
+                                                    <rect key="frame" x="154" y="105" width="76" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Remove"/>
+                                                    <connections>
+                                                        <action selector="removeFromCartButtonTapped:" destination="zlz-G3-jmJ" eventType="touchUpInside" id="ChA-tK-0x6"/>
+                                                    </connections>
+                                                </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SaS-wg-CDg">
-                                                    <rect key="frame" x="283" y="99.5" width="96" height="43"/>
+                                                    <rect key="frame" x="283" y="99" width="96" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Buy"/>
@@ -69,13 +85,6 @@
                                                         <action selector="onBuyButtonTapped:" destination="zlz-G3-jmJ" eventType="touchUpInside" id="0UL-8t-0gB"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="keG-VW-I0D">
-                                                    <rect key="frame" x="158" y="39" width="236" height="76"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="54I-XT-2av" firstAttribute="top" secondItem="hnb-9V-m2x" secondAttribute="topMargin" id="auy-B1-BXS"/>
@@ -88,6 +97,7 @@
                                             <outlet property="productImage" destination="54I-XT-2av" id="78x-YV-i5h"/>
                                             <outlet property="productPrice" destination="eD9-kf-k9k" id="hvs-cR-xKt"/>
                                             <outlet property="productTitle" destination="keG-VW-I0D" id="Led-BK-iM8"/>
+                                            <outlet property="removeFromCartButton" destination="GIb-lG-Kwu" id="F93-ti-yUD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
