@@ -163,6 +163,17 @@ class DataBaseManager {
         let description: String
         let image: String
         let category: String
+        let quantity: Int // Added quantity attribute
+
+        init(id: Int, title: String, price: Double, description: String, image: String, category: String, quantity: Int) {
+            self.id = id
+            self.title = title
+            self.price = price
+            self.description = description
+            self.image = image
+            self.category = category
+            self.quantity = quantity
+        }
     }
 
     
@@ -238,7 +249,8 @@ class DataBaseManager {
                     price: price,
                     description: description,
                     image: image,
-                    category: "unknown" // You might adjust this based on your data model
+                    category: "unknown", // You might adjust this based on your data model
+                    quantity: Int(quantity)
                 )
 
                 products.append(product)
@@ -275,7 +287,8 @@ class DataBaseManager {
                     price: price,
                     description: description,
                     image: image,
-                    category: "unknown" // You might adjust this based on your data model
+                    category: "unknown", // You might adjust this based on your data model
+                    quantity: Int(quantity)
                 )
 
                 products.append(product)
@@ -315,7 +328,7 @@ class DataBaseManager {
             }
 
             // Assuming you want to insert a default quantity, adjust as needed
-            let defaultQuantity = 1
+            let defaultQuantity = 5
             sqlite3_bind_int(statement, 5, Int32(defaultQuantity))
 
             if sqlite3_step(statement) == SQLITE_DONE {
@@ -355,4 +368,27 @@ class DataBaseManager {
 
             return false
         }
+    
+    func decrementProductQuantity(productName: String) {
+        let updateQuery = "UPDATE \(productTableCart) SET \(quantityColumn) = \(quantityColumn) - 1 WHERE \(nameColumn) = ? AND \(quantityColumn) > 0;"
+
+        var statement: OpaquePointer?
+
+        if sqlite3_prepare_v2(db, updateQuery, -1, &statement, nil) == SQLITE_OK {
+            defer {
+                sqlite3_finalize(statement)
+            }
+
+            sqlite3_bind_text(statement, 1, (productName as NSString).utf8String, -1, nil)
+
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Product quantity decremented successfully.")
+            } else {
+                print("Error decrementing product quantity")
+            }
+        } else {
+            print("Error preparing update statement for quantity")
+        }
+    }
+
 }

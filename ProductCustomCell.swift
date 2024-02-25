@@ -13,6 +13,7 @@ class ProductCustomCell: UITableViewCell {
     var addToCartButtonTapped: (() -> Void)?
 
        @IBAction func onBuyButtonTapped(_ sender: Any) {
+           buyButtonTapped?()
            let alertController = UIAlertController(title: "Product Bought",
                                                            message: "Product bought successfully!",
                                                            preferredStyle: .alert)

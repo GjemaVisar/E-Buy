@@ -23,7 +23,7 @@ class HomePageController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = productsTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductCustomCell
         let product = products[indexPath.row]
         cell.productTitle.text = product.title
-        cell.productPrice.text = "Price: " + String(product.price)
+        cell.productPrice.text = "Price: " + String(product.price) + "$"
         cell.addToCartButtonTapped = {
                 // Call the insertProductIntoCart function
                  DataBaseManager.shared.insertProductIntoCart(product: product)
