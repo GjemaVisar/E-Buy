@@ -17,8 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
            // Override point for customization after application launch.
 //        databaseManager.dropProductTable()
-        databaseManager.fetchAndInsertDataFromAPI()
-        databaseManager.printAllProducts()
+        if !UserDefaults.standard.bool(forKey: "isAppAlreadyLaunchedOnce") {
+                   // Set the flag to true to indicate that the app has been launched
+                   UserDefaults.standard.set(true, forKey: "isAppAlreadyLaunchedOnce")
+
+                   // Perform data fetching and insertion
+                   databaseManager.fetchAndInsertDataFromAPI()
+               }
+//        databaseManager.printAllProducts()
            return true
        }
     func applicationWillResignActive(_ application: UIApplication) {
