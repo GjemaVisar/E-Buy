@@ -23,7 +23,12 @@ class HomePageController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = productsTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductCustomCell
         let product = products[indexPath.row]
         cell.productTitle.text = product.title
-        
+        cell.productPrice.text = "Price: " + String(product.price)
+        cell.buyButtonTapped = {
+                // Call the insertProductIntoCart function
+                 DataBaseManager.shared.insertProductIntoCart(product: product)
+               
+            }
         
         if let url = URL(string: product.image) {
                 if let data = try? Data(contentsOf: url) {

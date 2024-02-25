@@ -7,12 +7,13 @@ class DataBaseManager {
     private var db: OpaquePointer?
     
     private let productTable = "product"
-    
+    private let productTableCart = "cart"
     private let nameColumn = "name"
     private let priceColumn = "price"
     private let imageColumn = "image"
     private let descriptionColumn = "description"
     private let quantityColumn = "quantity"
+
 
     private init() {
         openDatabase()
@@ -56,9 +57,25 @@ class DataBaseManager {
         """
 
         if sqlite3_exec(db, createTableQuery, nil, nil, nil) == SQLITE_OK {
-            print("Table created successfully")
+            print("Table products created successfully")
         } else {
-            print("Error creating table")
+            print("Error creating table products")
+        }
+        let createTableCart = """
+        CREATE TABLE IF NOT EXISTS \(productTableCart) (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            \(nameColumn) TEXT NOT NULL,
+            \(priceColumn) REAL NOT NULL,
+            \(imageColumn) TEXT NOT NULL,
+            \(descriptionColumn) TEXT NOT NULL,
+            \(quantityColumn) INTEGER NOT NULL
+        );
+        """
+
+        if sqlite3_exec(db, createTableCart, nil, nil, nil) == SQLITE_OK {
+            print("Table cart created successfully")
+        } else {
+            print("Error creating table cart")
         }
     }
     
@@ -169,7 +186,7 @@ class DataBaseManager {
                     self.insertProduct(
                         name: product.title,
                         price: product.price,
-                        image: product.image,  
+                        image: product.image,
                         description: product.description,
                         quantity: 5 // You might adjust this based on your data model
                     )
@@ -228,7 +245,51 @@ class DataBaseManager {
 
         return products
     }
+    func insertProductIntoCart(product: Product) -> Bool {
+        let insertQuery = """
+            INSERT INTO \(productTableCart) (\(nameColumn), \(priceColumn), \(imageColumn), \(descriptionColumn), \(quantityColumn))
+            VALUES (?, ?, ?, ?, ?);
+        """
+        
+        var statement: OpaquePointer?
+        
+        if sqlite3_prepare_v2(db, insertQuery, -1, &statement, nil) == SQLITE_OK {
+            defer {
+                sqlite3_finalize(statement)
+            }
+
+            sqlite3_bind_text(statement, 1, (product.title as NSString).utf8String, -1, nil)
+            sqlite3_bind_double(statement, 2, product.price)
+
+            if let image = product.image as NSString? {
+                sqlite3_bind_text(statement, 3, image.utf8String, -1, nil)
+            } else {
+                sqlite3_bind_null(statement, 3)
+            }
+
+            if let description = product.description as NSString? {
+                sqlite3_bind_text(statement, 4, description.utf8String, -1, nil)
+            } else {
+                sqlite3_bind_null(statement, 4)
+            }
+
+            // Assuming you want to insert a default quantity, adjust as needed
+            let defaultQuantity = 1
+            sqlite3_bind_int(statement, 5, Int32(defaultQuantity))
+
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Product inserted into cart successfully.")
+                return true
+            } else {
+                print("Error inserting product into the cart table")
+            }
+        } else {
+            print("Error preparing insert statement for cart")
+        }
+        
+        return false
+    }
+
 
 
   }
-
