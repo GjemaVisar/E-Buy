@@ -6,10 +6,11 @@ class ProductCustomCell: UITableViewCell {
     @IBOutlet var productImage: UIImageView!
     @IBOutlet var productPrice: UILabel!
     @IBOutlet var buyButton: UIButton!
+    @IBOutlet var addToCartButton: UIButton!
     var buyButtonTapped: (() -> Void)?
+    var addToCartButtonTapped: (() -> Void)?
 
        @IBAction func onBuyButtonTapped(_ sender: Any) {
-           buyButtonTapped?()
            let alertController = UIAlertController(title: "Product Bought",
                                                            message: "Product bought successfully!",
                                                            preferredStyle: .alert)
@@ -22,6 +23,20 @@ class ProductCustomCell: UITableViewCell {
                        currentViewController.present(alertController, animated: true, completion: nil)
                    }
        }
+    @IBAction func addToCartButtonTapped(_ sender: Any) {
+        addToCartButtonTapped?()
+        let alertController = UIAlertController(title: "Product added to Cart",
+                                                        message: "Product added to Cart successfully!",
+                                                        preferredStyle: .alert)
+
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertController.addAction(okAction)
+
+                // Get the current view controller to present the alert
+                if let currentViewController = UIApplication.shared.keyWindow?.rootViewController {
+                    currentViewController.present(alertController, animated: true, completion: nil)
+                }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         

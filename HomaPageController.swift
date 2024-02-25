@@ -24,7 +24,7 @@ class HomePageController: UIViewController, UITableViewDataSource, UITableViewDe
         let product = products[indexPath.row]
         cell.productTitle.text = product.title
         cell.productPrice.text = "Price: " + String(product.price)
-        cell.buyButtonTapped = {
+        cell.addToCartButtonTapped = {
                 // Call the insertProductIntoCart function
                  DataBaseManager.shared.insertProductIntoCart(product: product)
                

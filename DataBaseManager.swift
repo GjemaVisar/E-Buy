@@ -245,6 +245,41 @@ class DataBaseManager {
 
         return products
     }
+    
+    public func getAllCartProducts() -> [Product] {
+        var products: [Product] = []
+
+        let query = "SELECT * FROM \(productTableCart);"
+        var statement: OpaquePointer?
+
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            defer {
+                sqlite3_finalize(statement)
+            }
+
+            while sqlite3_step(statement) == SQLITE_ROW {
+                let name = String(cString: sqlite3_column_text(statement, 1))
+                let price = sqlite3_column_double(statement, 2)
+                let image = String(cString: sqlite3_column_text(statement, 3))
+                let description = String(cString: sqlite3_column_text(statement, 4))
+                let quantity = sqlite3_column_int(statement, 5)
+
+                let product = Product(
+                    title: name,
+                    price: price,
+                    description: description,
+                    image: image,
+                    category: "unknown" // You might adjust this based on your data model
+                )
+
+                products.append(product)
+            }
+        } else {
+            print("Error preparing SELECT statement")
+        }
+
+        return products
+    }
     func insertProductIntoCart(product: Product) -> Bool {
         let insertQuery = """
             INSERT INTO \(productTableCart) (\(nameColumn), \(priceColumn), \(imageColumn), \(descriptionColumn), \(quantityColumn))
