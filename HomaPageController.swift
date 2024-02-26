@@ -5,13 +5,13 @@ class HomePageController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet var productsTableView: UITableView!
     
-    private var products: [DataBaseManager.Product] = []
+    private var products: [Product] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         productsTableView.dataSource = self
         productsTableView.delegate = self
-        // Fetch data from the database
+        //Fetch products from DB
         products = DataBaseManager.shared.getAllProducts()
     }
     
@@ -22,22 +22,25 @@ class HomePageController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = productsTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductCustomCell
         let product = products[indexPath.row]
-        cell.productTitle.text = product.title
-        cell.productPrice.text = "Price: " + String(product.price) + "$"
-        cell.addToCartButtonTapped = {
-                // Call the insertProductIntoCart function
-                 DataBaseManager.shared.insertProductIntoCart(product: product)
-               
-            }
+        cell.configure(with: product)
         
-        if let url = URL(string: product.image) {
-                if let data = try? Data(contentsOf: url) {
-                    cell.productImage.image = UIImage(data: data)
-                }
-            }
+        cell.buttonActionHandler = { [weak self] _ in
+            guard let self = self else { return }
+            // Call the insertProductIntoCart function
+            _ = DataBaseManager.shared.insertProductIntoCart(product: product)
+            self.showAlert(message: "Product inserted into cart", title: "Success")
+        }
+        
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140
+    }
+    
+    func showAlert(message: String,title: String) {
+        let alert = UIAlertController(title: title,  message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }

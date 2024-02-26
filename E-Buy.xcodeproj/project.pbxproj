@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		FA2067722B8B0C9500B17552 /* ProductCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2067712B8B0C9400B17552 /* ProductCustomCell.swift */; };
+		FA86A8A82B8CE36D003CEAE9 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86A8A72B8CE36D003CEAE9 /* ProductModel.swift */; };
 		FAC561082B88F6FA00AE8FFF /* HomaPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC561072B88F6FA00AE8FFF /* HomaPageController.swift */; };
 		FAC5610A2B88F75F00AE8FFF /* CartPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC561092B88F75F00AE8FFF /* CartPageController.swift */; };
 		FAC5610D2B890D1500AE8FFF /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = FAC5610C2B890D1500AE8FFF /* SQLite */; };
 		FAC5610F2B890D4D00AE8FFF /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5610E2B890D4D00AE8FFF /* DataBaseManager.swift */; };
 		FAD4933B2B8B490700DC8CCF /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = FAD4933A2B8B490700DC8CCF /* SDWebImage */; };
 		FAD4933D2B8B490700DC8CCF /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FAD4933C2B8B490700DC8CCF /* SDWebImageMapKit */; };
-		FAEBB9DB2B88C5F300C31610 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEBB9DA2B88C5F300C31610 /* ViewController.swift */; };
 		FAF0F8832B88891400290E31 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0F8822B88891400290E31 /* Tests_iOS.swift */; };
 		FAF0F8852B88891400290E31 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0F8842B88891400290E31 /* Tests_iOSLaunchTests.swift */; };
 		FAF0F88F2B88891400290E31 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0F88E2B88891400290E31 /* Tests_macOS.swift */; };
@@ -44,10 +44,10 @@
 
 /* Begin PBXFileReference section */
 		FA2067712B8B0C9400B17552 /* ProductCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCustomCell.swift; sourceTree = "<group>"; };
+		FA86A8A72B8CE36D003CEAE9 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		FAC561072B88F6FA00AE8FFF /* HomaPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomaPageController.swift; sourceTree = "<group>"; };
 		FAC561092B88F75F00AE8FFF /* CartPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPageController.swift; sourceTree = "<group>"; };
 		FAC5610E2B890D4D00AE8FFF /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
-		FAEBB9DA2B88C5F300C31610 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FAEBBA692B88D27600C31610 /* E-Buy--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "E-Buy--iOS--Info.plist"; sourceTree = "<group>"; };
 		FAF0F86C2B88891400290E31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAF0F8712B88891400290E31 /* E-Buy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "E-Buy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,17 +98,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA86A8A92B8CF7A7003CEAE9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FAC561072B88F6FA00AE8FFF /* HomaPageController.swift */,
+				FAC561092B88F75F00AE8FFF /* CartPageController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		FAF0F8642B88891100290E31 = {
 			isa = PBXGroup;
 			children = (
+				FA86A8A92B8CF7A7003CEAE9 /* Controllers */,
+				FA86A8A72B8CE36D003CEAE9 /* ProductModel.swift */,
 				FA2067712B8B0C9400B17552 /* ProductCustomCell.swift */,
 				FAC5610E2B890D4D00AE8FFF /* DataBaseManager.swift */,
-				FAC561092B88F75F00AE8FFF /* CartPageController.swift */,
-				FAC561072B88F6FA00AE8FFF /* HomaPageController.swift */,
-				FAEBBA692B88D27600C31610 /* E-Buy--iOS--Info.plist */,
-				FAEBB9DA2B88C5F300C31610 /* ViewController.swift */,
 				FAF0F8AA2B8896AD00290E31 /* AppDelegate.swift */,
 				FAF0F8A82B888FF900290E31 /* MainStoryboard.storyboard */,
+				FAEBBA692B88D27600C31610 /* E-Buy--iOS--Info.plist */,
 				FAF0F8692B88891100290E31 /* Shared */,
 				FAF0F8782B88891400290E31 /* macOS */,
 				FAF0F8812B88891400290E31 /* Tests iOS */,
@@ -330,8 +338,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAEBB9DB2B88C5F300C31610 /* ViewController.swift in Sources */,
 				FAF0F8AB2B8896AD00290E31 /* AppDelegate.swift in Sources */,
+				FA86A8A82B8CE36D003CEAE9 /* ProductModel.swift in Sources */,
 				FA2067722B8B0C9500B17552 /* ProductCustomCell.swift in Sources */,
 				FAC5610A2B88F75F00AE8FFF /* CartPageController.swift in Sources */,
 				FAC561082B88F6FA00AE8FFF /* HomaPageController.swift in Sources */,
