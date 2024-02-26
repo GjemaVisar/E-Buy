@@ -1,6 +1,6 @@
 <h1 style="font-size: 24px;">E-Buy</h1>
 
-<h2 style="font-size: 14px;">Project Describtion</h1>
+<h2 style="font-size: 14px;">Project Description</h1>
 
 
 •	Aplikacioni E-Buy është një aplikacion mobil i zhvilluar në Swift duke përdorur UIKit si dhe SQLLite për ruajten e të dhënave në databazë. 
