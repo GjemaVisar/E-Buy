@@ -47,12 +47,23 @@ Dependencies:
 Screenshots:
 
 Home Page:        
+![HomePageLook](https://github.com/GjemaVisar/E-Buy/assets/115551440/1f3f2538-db4b-4102-95fd-241fe655b7ea)
 
+Cart Page with no products added:   
+![CartPage0](https://github.com/GjemaVisar/E-Buy/assets/115551440/d3d59eaa-4956-4673-9c56-a2563d447af8)
 
-Cart Page with no products added:                                     
-Products in cart, total value	Buying a product                                      
+Products in cart, total value	Buying a product   
+![CartPage1](https://github.com/GjemaVisar/E-Buy/assets/115551440/781df613-cb7f-4491-9f8e-712abdf12524)
+
+Adding a product to Cart
+![AddingProductToCart](https://github.com/GjemaVisar/E-Buy/assets/115551440/72bc4eb6-3e7f-4a56-aadb-beeae3661914)
                  
 Removing a product from Cart
+![CartPage2](https://github.com/GjemaVisar/E-Buy/assets/115551440/91423ad2-430f-4c5c-aec4-8a5ca7750d97)
+
+Buying a product from cart
+![CartPage3](https://github.com/GjemaVisar/E-Buy/assets/115551440/02a3a1c4-0316-4a28-a4ce-1b5207bfe145)
+
  
 
 
