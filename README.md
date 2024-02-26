@@ -47,7 +47,7 @@ Dependencies:
 Screenshots:
 
 Home Page:        
-![Home Page]("C:\Users\38343\Downloads\HomePageLook.png" =250x)
+
 
 Cart Page with no products added:                                     
 Products in cart, total value	Buying a product                                      
